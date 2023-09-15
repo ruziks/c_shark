@@ -16,7 +16,7 @@ namespace ConsoleApp1
             for (int i = b; i >= a; i--)
             {
                 int cub = 1;
-                int n = 3;
+                int n = 2;
                 int x = i;
                 while (n > 0)
                 {

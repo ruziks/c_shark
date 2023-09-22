@@ -1,0 +1,34 @@
+using System;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        public static int Count(int n)
+        {
+            if (n < 10)
+            {
+                return n % 2 == 1 ? 1 : 0;
+            }
+            else
+            {
+                int last = n % 10;
+                int count = last % 2 == 1 ? 1 :0;
+                return count + Count(n / 10);
+            }
+        }
+        static void Main(string[] args)
+        {
+            
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+            for (int i=a; i <= b; i++)
+            {
+                if (Count(i)==0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+    }
+}

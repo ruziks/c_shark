@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp2
 {
@@ -13,25 +14,38 @@ namespace ConsoleApp2
             else
             {
                 int last = n % 10;
-                int count = last % 2 == 1 ? 1 :0;
+                int count = last % 2 == 1 ? 1 : 0;
                 return count + Count(n / 10);
             }
         }
         static void Main(string[] args)
         {
-            
+
             int a = int.Parse(Console.ReadLine());
             int b = int.Parse(Console.ReadLine());
+            List<int> Max= new List<int>();
             int max = 0;
-            for (int i=a; i <= b; i++)
+            for (int i = a; i <= b; i++)
             {
                 int x = Count(i);
-                if (x>max)
+                if (x > max)
                 {
+                    Max.Clear();
+                    Max.Add(i);
                     max = x;
                 }
+                else if (x == max)
+                {
+                    Max.Add(i);
+                }
+
             }
+
             Console.WriteLine(max);
+            foreach(int yoi in Max)
+            {
+                Console.WriteLine(yoi);
+            };
         }
     }
 }

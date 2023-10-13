@@ -1,0 +1,32 @@
+using System;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        public static int Count(int n,int m)
+        {
+            if (n<0 || m<0)
+            {
+                return 0;
+            }
+            else if (m==0 || m==n)
+            {
+                return 1;
+            }
+            else
+            {
+                return Count(m,n-1) + Count(m-1,n-1);
+            }
+        }
+        static void Main(string[] args)
+        {
+
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+
+            int x = Count(a, b);
+            Console.WriteLine(x);
+        }
+    }
+}

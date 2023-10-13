@@ -11,7 +11,7 @@ namespace ConsoleApp2
     {
         public static int Count(int m, int n)
         {
-            if (m < 0 || m > n)
+            if (0 > m || m > n)
             {
                 return 0;
             }

@@ -1,22 +1,27 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
     class Program
     {
-        public static int Count(int n,int m)
+        public static int Count(int m, int n)
         {
-            if (n<0 || m<0)
+            if (m < 0 || m > n)
             {
                 return 0;
             }
-            else if (m==0 || m==n)
+            else if (m == 0 || m == n)
             {
                 return 1;
             }
             else
             {
-                return Count(m,n-1) + Count(m-1,n-1);
+                return Count(m, n - 1) + Count(m - 1, n - 1);
             }
         }
         static void Main(string[] args)

@@ -1,0 +1,21 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Введите текстовое сообщение:");
+        string str = Console.ReadLine();
+        Console.WriteLine("Введите подстроку для поиска:");
+        string podstr = Console.ReadLine();
+        string[] words = str.Split(new char[] { ' ', ',', '.', '!', '?', ':', ';' }, StringSplitOptions.RemoveEmptyEntries);
+        Console.WriteLine("Слова сообщения, содержащие подстроку '{0}':", podstr);
+        foreach (string word in words)
+        {
+            if (word.Contains(podstr))
+            {
+                Console.WriteLine(word);
+            }
+        }
+    }
+}

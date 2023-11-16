@@ -1,0 +1,42 @@
+using System;
+using System.IO;
+
+struct SPoint
+{
+    public double X;
+    public double Y;
+    public double FindDistance()
+    {
+        return Math.Sqrt(X * X + Y * Y);
+    }
+
+}
+
+class Program
+{
+    static void Main()
+    {
+        SPoint themost = new SPoint();
+        double maxDistance = 0;
+
+        string[] liness = File.ReadAllLines("points.txt");
+
+        foreach (string line in liness)
+        {
+            string[] coords = line.Split(' ');
+            SPoint point;
+            point.X = double.Parse(coords[0]);
+            point.Y = double.Parse(coords[1]);
+
+            double distance = point.FindDistance();
+            if (distance > maxDistance)
+            {
+                maxDistance = distance;
+                themost = point;
+            }
+        }
+
+        Console.WriteLine("Координаты точки, наиболее удаленной от начала координат:");
+        Console.WriteLine("X: " + themost.X + ", Y: " + themost.Y);
+    }
+}

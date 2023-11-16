@@ -1,0 +1,30 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        using (StreamReader fs = new StreamReader("C:/Users/rezya/source/repos/ConsoleApp2/ConsoleApp2/bin/Debug/54.txt"))
+        using (StreamWriter gs = new StreamWriter("g.txt"))
+        using (StreamWriter hs = new StreamWriter("h.txt"))
+        {
+            string line;
+            while ((line = fs.ReadLine()) != null)
+            {
+                int number;
+                if (int.TryParse(line, out number))
+                {
+                    if (number % 2 == 0)
+                    {
+                        gs.WriteLine(number);
+                    }
+                    else
+                    {
+                        hs.WriteLine(number);
+                    }
+                }
+            }
+        }
+    }
+}

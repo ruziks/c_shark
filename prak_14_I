@@ -24,7 +24,7 @@ class Program
         foreach (string line in liness)
         {
             string[] coords = line.Split(' ');
-            SPoint point;
+            SPoint point = new SPoint();
             point.X = double.Parse(coords[0]);
             point.Y = double.Parse(coords[1]);
 

@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace a
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            char[] a = new char[] { ' ', '\n', '\t' };
+            string f = File.ReadAllText("f.txt");
+
+            string[] fs = f.Split(a, StringSplitOptions.RemoveEmptyEntries);
+            int length = fs.Length;
+            using (StreamWriter gs = new StreamWriter("g.txt", false))
+            using (StreamWriter hs = new StreamWriter("h.txt", false))
+            {
+                for (int i = 0; i < length; i++)
+                {
+                if (f[i]%2==0){
+                    gs.WriteLine(f[i]);
+                }
+                else {
+                    hs.WriteLine(f[i]);
+                }
+                }
+            }
+        }
+    }
+}

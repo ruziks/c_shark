@@ -1,31 +1,31 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 
-namespace a
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        
+        char[] a = new char[] { ' ', '\n', '\t' };
+        string file1 = File.ReadAllText("f.txt");
+        string[] fs = file1.Split(a, StringSplitOptions.RemoveEmptyEntries);
+        int length = fs.Length;
+        
+        
+        using (StreamWriter sg = new StreamWriter("g.txt"))
+        using (StreamWriter sh = new StreamWriter("h.txt"))
         {
-            
-            char[] a = new char[] { ' ', '\n', '\t' };
-            string f = File.ReadAllText("f.txt");
-
-            string[] fs = f.Split(a, StringSplitOptions.RemoveEmptyEntries);
-            int length = fs.Length;
-            using (StreamWriter gs = new StreamWriter("g.txt", false))
-            using (StreamWriter hs = new StreamWriter("h.txt", false))
+            for (int i = 0; i < length; i++)
             {
-                for (int i = 0; i < length; i++)
+                if (int.Parse(fs[i]) % 2 == 0)
                 {
-                if (f[i]%2==0){
-                    gs.WriteLine(f[i]);
+                    sg.WriteLine(fs[i]);
                 }
-                else {
-                    hs.WriteLine(f[i]);
-                }
+                else
+                {
+                    sh.WriteLine(fs[i]);
                 }
             }
         }

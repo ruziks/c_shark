@@ -1,32 +1,30 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static System.Net.WebRequestMethods;
+using System.Collections.Generic;
 
-namespace a
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        List<int> number;
+         char[] a = new char[] { ' ', '\n', '\t' };
+        using (StreamReader s = new StreamReader("567.txt"))
         {
-            List<int> number = new List<int>();
-            char[] a = new char[] { ' ', '\n', '\t' };
-            string file = System.IO.File.ReadAllText("567.txt");
-            string[] text = file.Split(a, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < text.Length; i++)
+            number = s.ReadLine().Split(a,StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
+        }
+        var sortedNums = number.Where(x => x > 0).OrderBy(x => x);
+        //var sortedNums =
+        //       from n in number
+        //       where n > 0
+        //       orderby n
+        //      select n;
+
+        using (StreamWriter s = new StreamWriter("output.txt"))
+        {
+            foreach (int num in sortedNums)
             {
-                number.Add(int.Parse(text[i]));
-            }
-            //var sortedNums = number.Where(x => x > 0).OrderBy(x => x);
-            var sortedNums =
-                from n in number
-                where n > 0
-                orderby n
-                select n;
-            foreach (var x in sortedNums)
-            {
-                Console.Write("{0} ", x);
+                s.Write(num+" ");
             }
         }
     }

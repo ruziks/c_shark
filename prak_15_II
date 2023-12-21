@@ -45,7 +45,7 @@ namespace мяу
 
                 var sortStudents = students
                     .Where(s => s.SchoolName == schoolFilter)
-                    .OrderByDescending(s => s.Year)
+                    .OrderBy(s => s.Year)
                     .ToArray();
 
                 // запись в файл

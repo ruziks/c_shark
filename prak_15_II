@@ -52,7 +52,7 @@ namespace мяу
                 using (StreamWriter fileOut = new StreamWriter("output.txt"))
                 {
                     foreach (Student c in sortStudents)
-                        fileOut.WriteLine(c.Name + ' ' + c.HomeAdress + ' ' + c.SchoolName + ' ' + c.Year);
+                        fileOut.WriteLine(c.Name + ' ' + c.Surname + ' ' + c.HomeAdress + ' ' + c.SchoolName + ' ' + c.Year);
                 }
             }
         }

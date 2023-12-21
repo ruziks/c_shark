@@ -1,0 +1,4 @@
+var sortStudents = (from s in students
+                    where s.SchoolName == schoolFilter
+                    orderby s.Year
+                    select s).ToArray();

@@ -27,28 +27,24 @@ namespace мяу
 
         static void Main()
         {
-            using (StreamReader fileIn = new StreamReader("input.txt"))
+            using (StreamReader fileIn = new StreamReader("C:\\Users\\reziapovrr\\source\\repos\\ConsoleApp3\\ConsoleApp3\\bin\\Debug\\input.txt"))
             {
                 int n = int.Parse(fileIn.ReadLine());
                 Student[] students = new Student[n];
                 string schoolFilter = "School51";
-                int count = 0;
-
 
                 for (int i = 0; i < n; i++)
                 {
                     string[] st = fileIn.ReadLine().Split(' ');
                     students[i] = new Student(st[0], st[1], st[2], st[3], int.Parse(st[4]));
-                    if (st[3] == schoolFilter)
-                        count++;
                 }
 
                 var sortStudents = (from s in students
-                    where s.SchoolName == schoolFilter
-                    orderby s.Year
-                    select s).ToArray();
-                
-                using (StreamWriter fileOut = new StreamWriter("output.txt"))
+                                    where s.SchoolName == schoolFilter
+                                    orderby s.Year
+                                    select s).ToArray();
+
+                using (StreamWriter fileOut = new StreamWriter("C:\\Users\\reziapovrr\\source\\repos\\ConsoleApp3\\ConsoleApp3\\bin\\Debug\\output.txt"))
                 {
                     foreach (Student c in sortStudents)
                         fileOut.WriteLine(c.Name + ' ' + c.Surname + ' ' + c.HomeAdress + ' ' + c.SchoolName + ' ' + c.Year);

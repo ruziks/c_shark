@@ -1,0 +1,145 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace class_array
+{
+    public class Array
+    {
+        private int[] array;
+
+        public Array(int n)
+        {
+            array = new int[n];
+        }
+        public Array()
+        {
+
+        }
+
+        public Array(int[] MyArray)
+        {
+            array = new int[MyArray.Length];
+            System.Array.Copy(MyArray, array, MyArray.Length);
+        }
+
+        public static Array InputArray()
+        {
+            Console.Write("Введите количество элементов массива: ");
+            int n = int.Parse(Console.ReadLine());
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"Введите элемент {i + 1}: ");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            return new Array(arr);
+        }
+
+
+        //Методы, позволяющие: вывести элементы массива на экран
+        public void Print()
+        {
+            Console.WriteLine("Элементы массива:");
+            Console.WriteLine(this.ToString());
+        }
+        public override string ToString()
+        {
+            StringBuilder PrintArray = new StringBuilder();
+            for (int i = 0; i < array.Length; i++)
+            {
+                PrintArray.Append(array[i] + " ");
+            }
+            return PrintArray.ToString();
+        }
+
+        // Медоты, позволяющие: отсортировать элементы каждой строки массива в порядке убывания. 
+        public void Sort()
+        {
+            System.Array.Sort(array);
+        }
+        //возвращающее общее количество элементов в массиве (доступное только для чтения);
+        public int Length
+        {
+            get { return array.Length; }
+        }
+
+        public int this[int index]
+        {
+            get { return array[index]; }
+            set { array[index] = value; }
+        }
+
+        //позволяющее увеличить значение всех элементов массива на скаляр (доступное только для записи). 
+        public int Scalar
+        {
+            set
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] *= value;
+                }
+            }
+        }
+        public static Array operator ++(Array x) //перегрузка операции инкремента
+        {
+            Array temp = new Array(x.array);
+            for (int i = 0; i < temp.array.Length; i++)
+                temp.array[i]++;
+            return temp;
+        }
+
+
+        public static Array operator --(Array x) //перегрузка операции инкремента
+        {
+            Array temp = new Array(x.array);
+            for (int i = 0; i < temp.array.Length; i++)
+                temp.array[i]--;
+            return temp;
+        }
+
+        public static bool operator !(Array a)
+        {
+            for (int i = 0; i < a.array.Length - 1; i++)
+            {
+                if (a.array[i] > a.array[i + 1])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static Array operator *(Array a, int scalar)
+        {
+            Array result = new Array(a.Length);
+            for (int i = 0; i < a.array.Length; i++)
+            {
+                result.array[i] = a.array[i] * scalar;
+            }
+            return result;
+        }
+        public static Array operator *(int scalar, Array a)
+        {
+            return a*scalar;
+        }
+
+        public static implicit operator Array(int[] a)
+        {
+            return new Array(a);
+        }
+
+        //неявное преобразование типа DemoArray в int []
+        public static implicit operator int[](Array a)
+        {
+            int[] temp = new int[a.Length];
+            for (int i = 0; i < a.Length; i++)
+            {
+                temp[i] = a[i];
+            }
+            return temp;
+        }
+    }
+}

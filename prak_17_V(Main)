@@ -1,0 +1,54 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static class_array.Program;
+
+
+namespace class_array
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Array arr = Array.InputArray();
+            Array b1 = arr;// неявное преобразование массива в тип int 
+            for (int i = 0; i < b1.Length; i++)
+            {
+                Console.WriteLine("Элемент массива:{0}", b1[i]);
+            }
+            Console.WriteLine("Элементы массива:");
+            Console.WriteLine(arr.ToString());
+            Console.WriteLine("Отсортированный массив:");
+            arr.Sort();
+            Console.WriteLine(arr.ToString());
+            Console.WriteLine("Индексатор: {0}", arr[1]);
+            Console.WriteLine("Кол-во эл-тов {0}", arr.Length);
+            Console.WriteLine("Скаляр: {0}", arr.Scalar = 2);
+            Console.WriteLine(arr.ToString());
+            Console.WriteLine("Инкремент:");
+            ++arr;
+            Console.WriteLine(arr.ToString());
+            Console.WriteLine("Декремент:");
+            --arr;
+            Console.WriteLine(arr.ToString());
+            Console.WriteLine("Перегрузка *:");
+            Array TwoArray = 2* arr * 2;
+            Console.WriteLine(TwoArray.ToString());
+            if (!arr)
+            {
+                Console.WriteLine("По убыванию");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("По возрастанию");
+                Console.ReadKey();
+                
+            }
+        }
+    }
+}
